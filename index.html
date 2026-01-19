@@ -2,239 +2,151 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>Our Story</title>
+<title>For You</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: Arial, sans-serif;
   overflow:hidden;
 }
 
-/* โครงสร้างหน้า */
 .page{
   width:100vw;
   height:100vh;
-  position:absolute;
-  top:0;
-  left:0;
   display:none;
   justify-content:center;
   align-items:center;
   text-align:center;
+  color:#fff;
+  background-size:cover;
+  background-position:center;
+  padding:20px;
 }
 
 .page.active{display:flex;}
 
-.page::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-size:cover;
-  background-position:center;
-  z-index:-2;
-}
-
-.page::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-}
-
-/* เนื้อหา */
 .content{
+  background:rgba(0,0,0,0.45);
+  padding:25px;
+  border-radius:16px;
   max-width:90%;
-  padding:30px;
-  border-radius:20px;
 }
 
-h1{
-  font-size:2.2rem;
-  margin-bottom:14px;
-  letter-spacing:1px;
-}
+h1{font-size:2.2em;margin-bottom:10px;}
+p{font-size:1.1em;line-height:1.6;}
 
-p{
-  font-size:1.15rem;
-  line-height:1.7;
-}
-
-/* ปุ่ม */
 button{
-  position:fixed;
-  bottom:30px;
-  right:30px;
-  padding:12px 22px;
+  margin-top:20px;
+  padding:12px 26px;
   border:none;
   border-radius:30px;
   font-size:16px;
-  background:white;
-  color:#333;
-}
-
-/* input */
-input{
-  padding:12px 18px;
-  border-radius:25px;
-  border:none;
-  font-size:16px;
-  text-align:center;
-}
-
-/* วิดีโอ */
-video{
-  max-width:90%;
-  border-radius:18px;
-  margin-top:20px;
-}
-
-/* 🎨 โทนแต่ละหน้า */
-
-/* หน้าใส่รหัส */
-.lock{
+  background:#ff7eb3;
   color:#fff;
-  background:#111;
+  cursor:pointer;
 }
 
-/* หน้า 1 สวน */
-.page1{
-  color:#f5fff7;
+video,img{
+  max-width:100%;
+  border-radius:14px;
+  margin-top:15px;
 }
-.page1::before{background-image:url('images/page1.jpg');}
-.page1::after{background:rgba(20,60,30,0.45);}
-.page1 .content{background:rgba(0,0,0,0.25);}
-
-/* หน้า 2 ทะเล พระอาทิตย์ตก */
-.page2{
-  color:#fff2e6;
-}
-.page2::before{background-image:url('images/page2.jpg');}
-.page2::after{background:linear-gradient(rgba(120,60,30,0.45),rgba(30,10,10,0.6));}
-.page2 .content{background:rgba(0,0,0,0.25);}
-
-/* หน้า 3 น้ำตก */
-.page3{
-  color:#e9f6ff;
-}
-.page3::before{background-image:url('images/page3.jpg');}
-.page3::after{background:rgba(10,40,60,0.55);}
-.page3 .content{background:rgba(0,0,0,0.3);}
-
-/* หน้า 4 ห้าง */
-.page4{
-  color:#222;
-}
-.page4::before{background-image:url('images/page4.jpg');}
-.page4::after{background:rgba(255,255,255,0.6);}
-.page4 .content{background:rgba(255,255,255,0.75);}
-
-/* หน้า 5 ระหว่างทาง */
-.page5{
-  color:#f2f0ff;
-}
-.page5::before{background-image:url('images/page5.jpg');}
-.page5::after{background:rgba(50,40,80,0.55);}
-.page5 .content{background:rgba(0,0,0,0.3);}
-
-/* หน้า 6 ปิดท้าย */
-.page6{
-  color:#e8f0ff;
-}
-.page6::before{background-image:url('images/page6.jpg');}
-.page6::after{background:rgba(10,20,40,0.65);}
-.page6 .content{background:rgba(0,0,0,0.35);}
 </style>
 </head>
 
 <body>
 
-<audio id="music" autoplay loop></audio>
-
-<!-- หน้าใส่รหัส -->
-<div class="page active lock">
-  <div class="content">
-    <h1>For You</h1>
-    <p>ใส่รหัสเพื่อดูเรื่องราวของเรา</p>
-    <input type="password" id="pass">
-    <br><br>
-    <button onclick="checkPass()">เข้าสู่เว็บ</button>
-  </div>
-</div>
-
-<div class="page page1" data-music="music/song1.mp3">
-  <div class="content">
-    <h1>จุดเริ่มต้น</h1>
-    <p>ผู้หญิงสองคน เดินอยู่ในสวนสาธารณะ</p>
-  </div>
-</div>
-
-<div class="page page2" data-music="music/song2.mp3">
-  <div class="content">
-    <h1>ริมทะเลยามเย็น</h1>
-    <p>เราถ่ายรูปให้กัน ในแสงสุดท้ายของวัน</p>
-  </div>
-</div>
-
-<div class="page page3" data-music="music/song3.mp3">
-  <div class="content">
-    <h1>ช่วงเวลาที่ไม่รู้ตัว</h1>
-    <video src="video/page3.mp4" controls></video>
-    <p>เหมือนมีใครบางคนแอบมองอยู่ไกล ๆ</p>
-  </div>
-</div>
-
-<div class="page page4" data-music="music/song4.mp3">
-  <div class="content">
-    <h1>วันครบรอบ</h1>
-    <p>วันที่ฉันพาเธอไปเดินห้าง เลือกของขวัญ</p>
-  </div>
-</div>
-
-<div class="page page5" data-music="music/song5.mp3">
-  <div class="content">
-    <h1>ระหว่างทาง</h1>
-    <p>ไม่ว่าเราจะอยู่ที่ไหน ก็ยังเป็นเรา</p>
-  </div>
-</div>
-
-<div class="page page6" data-music="music/song6.mp3">
+<!-- หน้า 1 -->
+<div class="page active" style="background-image:url('images/bg1.jpg')">
   <div class="content">
     <h1>070824</h1>
-    <p>
-      ไม่ต้องพูดคำสัญญาอะไร  
-      แค่วันนี้ยังเลือกกัน  
-      แค่นี้ก็พอแล้ว
+    <p style="font-size:1.4em;letter-spacing:1px;">
+      Happy Valentine’s Day
+    </p>
+    <button onclick="startMusic();nextPage()">เริ่มเรื่องราว</button>
+  </div>
+</div>
+
+<!-- หน้า 2 -->
+<div class="page" style="background-image:url('images/bg2.jpg')">
+  <div class="content">
+    <h1>Evening by the Sea</h1>
+    <p>The sun was setting<br>we took photos for each other</p>
+    <img src="images/bg2.jpg">
+    <button onclick="nextPage()">ถัดไป</button>
+  </div>
+</div>
+
+<!-- หน้า 3 -->
+<div class="page" style="background-image:url('images/bg3.jpg')">
+  <div class="content">
+    <h1>The Waterfall</h1>
+    <p>A moment that felt like<br>someone secretly captured us</p>
+    <video src="video/v1.mp4" controls></video>
+    <button onclick="nextPage()">ถัดไป</button>
+  </div>
+</div>
+
+<!-- หน้า 4 -->
+<div class="page" style="background-image:url('images/bg4.jpg')">
+  <div class="content">
+    <h1>Our Anniversary</h1>
+    <p>The day I walked with you<br>to find a special gift</p>
+    <button onclick="nextPage()">ถัดไป</button>
+  </div>
+</div>
+
+<!-- หน้า 5 -->
+<div class="page" style="background-image:url('images/bg5.jpg')">
+  <div class="content">
+    <h1>Every Memory</h1>
+    <p>Each day made it clearer<br>you are the one who matters</p>
+    <button onclick="nextPage()">ถัดไป</button>
+  </div>
+</div>
+
+<!-- หน้า 6 -->
+<div class="page" style="background-image:url('images/bg6.jpg')">
+  <div class="content">
+    <h1>The Ending</h1>
+    <p>No long words needed</p>
+    <p style="font-size:1.4em;margin-top:10px;">
+      I choose you
     </p>
   </div>
 </div>
 
-<button onclick="nextPage()">ถัดไป</button>
-
 <script>
-const pages=document.querySelectorAll('.page');
-const music=document.getElementById('music');
-let index=1;
+const pages = document.querySelectorAll(".page");
+let current = 0;
 
-function checkPass(){
-  if(pass.value==="070824"){
-    pages[0].classList.remove('active');
-    loadPage(1);
-  }else alert("รหัสไม่ถูกต้อง");
-}
+const songs = [
+  "music/song1.mp3",
+  "music/song2.mp3",
+  "music/song3.mp3",
+  "music/song4.mp3",
+  "music/song5.mp3",
+  "music/song6.mp3"
+];
 
-function loadPage(i){
-  pages.forEach(p=>p.classList.remove('active'));
-  pages[i].classList.add('active');
-  music.src=pages[i].dataset.music;
-  music.play();
+let audio = new Audio(songs[0]);
+audio.loop = true;
+
+function startMusic(){
+  audio.play();
 }
 
 function nextPage(){
-  index++;
-  if(index>=pages.length) index=1;
-  loadPage(index);
+  audio.pause();
+  pages[current].classList.remove("active");
+  current++;
+  if(current >= pages.length) return;
+  pages[current].classList.add("active");
+  audio = new Audio(songs[current]);
+  audio.loop = true;
+  audio.play();
 }
 </script>
 
