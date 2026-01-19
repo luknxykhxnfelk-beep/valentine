@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>For You 💙💗</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  text-align:center;
+  color:#fff;
+  overflow:hidden;
+}
+
+/* พื้นหลัง */
+.sky{background:linear-gradient(#87cefa,#fceabb);}
+.sunset{background:linear-gradient(#ff7e5f,#feb47b,#ffcc70);}
+.sea{background:linear-gradient(#2bc0e4,#eaecc6);}
+.end{background:linear-gradient(#667db6,#0082c8,#667db6);}
+
+.page{
+  display:none;
+  min-height:100vh;
+  padding:60px 20px;
+}
+
+.active{display:block;}
+
+h1{font-size:34px;}
+p{font-size:18px; line-height:1.8;}
+
+button{
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  color:white;
+  font-size:16px;
+  margin-top:30px;
+}
+
+input{
+  padding:12px;
+  border-radius:25px;
+  border:none;
+  font-size:16px;
+  text-align:center;
+}
+
+/* เอฟเฟกต์บิน */
+.fly{
+  position:fixed;
+  bottom:-20px;
+  animation: float 8s linear infinite;
+  opacity:0.8;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);opacity:0}
+  10%{opacity:1}
+  100%{transform:translateY(-110vh);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<!-- หน้าใส่รหัส -->
+<div class="page active sky" id="lock">
+  <h1>🔐 For You</h1>
+  <p>รหัสของเธอกับเค้า</p>
+  <input type="password" id="pass">
+  <br>
+  <button onclick="check()">Enter</button>
+</div>
+
+<!-- หน้า 1 -->
+<div class="page sky" id="p1">
+  <h1>Happy Valentine 💙</h1>
+  <p>
+    เหมือนนกที่บินอยู่บนฟ้า  
+    <br>อิสระ อบอุ่น และเต็มไปด้วยความหวัง  
+    <br>เค้าดีใจที่มีเธอ
+  </p>
+  <button onclick="next('p1','p2')">ต่อไป ➜</button>
+</div>
+
+<!-- หน้า 2 -->
+<div class="page sunset sea" id="p2">
+  <h1>Walking by the Sea 🌅</h1>
+  <p>
+    เดินช้า ๆ ริมทะเล  
+    <br>ทุกก้าวมีเธออยู่ข้าง ๆ  
+    <br>แสงอาทิตย์ยามเย็นอบอุ่นเหมือนหัวใจ
+  </p>
+  <button onclick="next('p2','p3')">ต่อไป ➜</button>
+</div>
+
+<!-- หน้า 3 -->
+<div class="page sunset" id="p3">
+  <h1>Butterfly Moment 🦋</h1>
+  <p>
+    เหมือนผีเสื้อที่บินวนรอบหัวใจ  
+    <br>ความรู้สึกนี้ยังสวยงามเสมอ
+  </p>
+  <button onclick="next('p3','p4')">ต่อไป ➜</button>
+</div>
+
+<!-- หน้าสุดท้าย -->
+<div class="page end" id="p4">
+  <h1>070824 💙💗</h1>
+  <p>
+    ไม่ต้องรู้ว่าวันข้างหน้าจะไกลแค่ไหน  
+    <br>แค่รู้ว่าวันนี้…  
+    <br>เธอกับเค้ายังเลือกกัน
+  </p>
+
+  <p style="margin-top:40px;font-size:20px;">
+    ขอบคุณที่เป็นรอยยิ้ม  
+    <br>เป็นความสบายใจ  
+    <br>และเป็นความรักของเค้าเสมอ 🤍
+  </p>
+</div>
+
+<script>
+function check(){
+  if(pass.value==="070824"){
+    lock.classList.remove("active");
+    p1.classList.add("active");
+  }else alert("รหัสไม่ถูกนะ 🤍");
+}
+
+function next(a,b){
+  document.getElementById(a).classList.remove("active");
+  document.getElementById(b).classList.add("active");
+}
+
+/* เอฟเฟกต์ นก / ผีเสื้อ */
+setInterval(()=>{
+  const f=document.createElement("div");
+  f.className="fly";
+  f.innerHTML=Math.random()>0.5?"🐦":"🦋";
+  f.style.left=Math.random()*100+"vw";
+  f.style.fontSize=20+Math.random()*20+"px";
+  f.style.animationDuration=6+Math.random()*6+"s";
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(),12000);
+},600);
+</script>
+
+</body>
+</html>
